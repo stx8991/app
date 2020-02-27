@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <title>全能播放器</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="content-language" content="zh-CN" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta name="referrer" content="never" />
+    <meta name="renderer" content="webkit" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="x5-page-mode" content="app" />
+	<link rel="icon" href="data:image/ico;base64,aWNv">
+    <meta name="Viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/hls.js/dist/hls.min.js"></script>
+    <style type="text/css">body,html{width:100%;height:100%;background:#000;padding:0;margin:0;overflow-x:hidden;overflow-y:hidden} *{margin:0;border:0;padding:0;text-decoration:none}  #dplayer{position:inherit} .dplayer-menu{display:none!important}
+	</style>
+	</head>
+<body oncontextmenu=self.event.returnValue=false onselectstart="return false">
+<div id="dplayer" style="width:100%;height:100%;"></div>
+<script>
+    var isiPad = navigator.userAgent.match(/iPad|iPhone|Android|Linux|iPod/i) != null;
+    var url = 'https://rescdn.yishihui.com/longvideo/transcode/video/vpc/20191213/12174410ioEsb5KVKRjkpCj4US.m3u8';
+	var pic = '';
+	if(isiPad){ var pic = 'https://ae01.alicdn.com/kf/Hda9c5327a78b4ee29d3ede28f46770adQ.gif'}
+	var type = url.indexOf('.m3u8') > -1 ? 'hls' : 'auto';
+	if(isiPad){
+		document.getElementById('dplayer').innerHTML = '<video src="'+url+'" controls="controls" preload="auto" poster="'+pic+'" width="100%" height="100%"></video>';
+	}else{
+		var dp = new DPlayer({
+			container: document.getElementById('dplayer'),
+			autoplay: true,
+			video: {
+				pic: pic,
+				url: url,
+				type: type,
+			}
+		});
+	}	
+</script>
+</body>
+</html>
